@@ -22,7 +22,7 @@ const App = () => {
     setReport(null);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/audit", {
+      const response = await fetch("https://ai-business-optimizer-backend-production.up.railway.app/api/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
