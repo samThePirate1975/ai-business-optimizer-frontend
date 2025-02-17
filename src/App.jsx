@@ -17,34 +17,35 @@ const App = () => {
   const [error, setError] = useState("");
 
   const handleSubmit = async () => {
-    setLoading(true);
-    setError("");
-    setReport(null);
-
-    try {
-      const response = await fetch("https://ai-business-optimizer-backend-production.up.railway.app/api/audit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          business_name: businessName,
-          description: description,
-          challenges: challenges,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Erreur lors de la génération de l’audit.");
+     setLoading(true);
+     setError("");
+     setReport(null);
+    
+  try {
+        const response = await fetch("https://ai-business-optimizer-backend-production.up.railway.app/api/audit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            business_name: businessName,
+            description: description,
+            challenges: challenges,
+          }),
+        });
+    
+        if (!response.ok) {
+          throw new Error("Erreur lors de la génération de l’audit.");
+        }
+    
+        const data = await response.json();
+        setReport(data);
+        console.log("🚀 Données stockées dans state report:", data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
       }
-
-      const data = await response.json();
-      setReport(data);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+    };
+    
   return (
     <div className="relative min-h-screen bg-gray-100 p-6 flex items-center justify-center">
       {/* 🔥 Loader Overlay en Avant-Plan */}
