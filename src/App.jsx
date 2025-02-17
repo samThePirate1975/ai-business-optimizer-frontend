@@ -21,16 +21,16 @@ const App = () => {
     setError("");
     setReport(null);
 
-  const response = await fetch("https://ai-business-optimizer-backend-production.up.railway.app/api/audit", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        business_name: businessName,
-        description: description,
-        challenges: challenges,
-    }),
-   });
-    
+    try {
+      const response = await fetch("https://ai-business-optimizer-backend-production.up.railway.app/api/audit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          business_name: businessName,
+          description: description,
+          challenges: challenges,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error("Erreur lors de la génération de l’audit.");
