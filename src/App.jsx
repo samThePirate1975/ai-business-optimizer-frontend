@@ -38,7 +38,6 @@ const App = () => {
     
         const data = await response.json();
         setReport(data);
-        console.log("🚀 Données stockées dans state report:", data);
       } catch (err) {
         setError(err.message);
       } finally {
