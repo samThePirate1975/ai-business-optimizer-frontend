@@ -29,7 +29,7 @@ const App = () => {
     console.log("🔍 Requête envoyée:", JSON.stringify({ business_name: businessName, description, challenges }));
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/audit", {
+      const response = await fetch("https://ai-business-optimizer.netlify.app/api/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
