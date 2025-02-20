@@ -27,9 +27,10 @@ const App = () => {
     }
 
     console.log("🔍 Requête envoyée:", JSON.stringify({ business_name: businessName, description, challenges }));
-
+    const BACKEND_URL = "https://ai-business-optimizer-backend-production.up.railway.app";
+    
     try {
-      const response = await fetch("https://ai-business-optimizer.netlify.app/api/audit", {
+      const response = await fetch(`${BACKEND_URL}/api/audit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
